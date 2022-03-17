@@ -1,0 +1,21 @@
+apiVersion: triliovault.trilio.io/v1
+kind: BackupPlan
+metadata:
+ name: postgres-backupplan
+ namespace: postgres
+spec:
+ backupNamespace: postgres
+ backupConfig:
+   target:
+     name: demo-s3-target
+ hookConfig:
+   mode: Sequential
+   hooks:
+     - hook:
+         name: postgres-hook
+       podSelector:
+         labels:
+           - matchLabels:
+               app.kubernetes.io/name: postgresql
+         regex: postgres-postgresql*
+       containerRegex: postgres-postgresql*

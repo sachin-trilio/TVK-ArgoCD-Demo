@@ -1,0 +1,23 @@
+apiVersion: triliovault.trilio.io/v1
+kind: Hook
+metadata:
+  name: postgres-hook
+spec:
+  pre:
+    execAction:
+      command:
+        - "bash"
+        - "-c"
+        - "PGPASSWORD=$POSTGRES_PASSWORD psql -U $POSTGRES_USER -c 'CHECKPOINT' > /tmp/hook_success"
+    ignoreFailure: false
+    maxRetryCount: 1
+    timeoutSeconds: 10
+  post:
+    execAction:
+      command:
+        - "bash"
+        - "-c"
+        - "echo 'post hook action completed'"
+    ignoreFailure: false
+    maxRetryCount: 1
+    timeoutSeconds: 10

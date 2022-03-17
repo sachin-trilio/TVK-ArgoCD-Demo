@@ -1,0 +1,21 @@
+apiVersion: triliovault.trilio.io/v1
+kind: BackupPlan
+metadata:
+ name: mysql-backupplan
+ namespace: mysql
+spec:
+ backupNamespace: mysql
+ backupConfig:
+   target:
+     name: demo-s3-target
+ hookConfig:
+   mode: Sequential
+   hooks:
+     - hook:
+         name: mysql-hook
+       podSelector:
+         labels:
+           - matchLabels:
+               app: mysql-qa
+         regex: mysql-qa*
+       containerRegex: mysql-qa*

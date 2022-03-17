@@ -1,0 +1,24 @@
+apiVersion: triliovault.trilio.io/v1
+kind: Hook
+metadata:
+  name: mysql-hook
+  namespace: mysql
+spec:
+  pre:
+    execAction:
+      command:
+        - "bash"
+        - "-c"
+        - "mysql --user=root --password=$MYSQL_ROOT_PASSWORD -Bse 'FLUSH TABLES WITH READ LOCK;system ${WAIT_CMD};'"
+    ignoreFailure: false
+    maxRetryCount: 1
+    timeoutSeconds: 10
+  post:
+    execAction:
+      command:
+        - "bash"
+        - "-c"
+        - "mysql --user=root --password=$MYSQL_ROOT_PASSWORD -Bse 'FLUSH LOGS; UNLOCK TABLES;'"
+    ignoreFailure: false
+    maxRetryCount: 1
+    timeoutSeconds: 10
