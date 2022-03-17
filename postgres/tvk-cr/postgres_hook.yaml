@@ -9,7 +9,7 @@ spec:
         - "bash"
         - "-c"
         - "PGPASSWORD=$POSTGRES_PASSWORD psql -U $POSTGRES_USER -c 'CHECKPOINT' > /tmp/hook_success"
-    ignoreFailure: false
+    ignoreFailure: true
     maxRetryCount: 1
     timeoutSeconds: 10
   post:
@@ -18,6 +18,6 @@ spec:
         - "bash"
         - "-c"
         - "echo 'post hook action completed'"
-    ignoreFailure: false
+    ignoreFailure: true
     maxRetryCount: 1
     timeoutSeconds: 10
