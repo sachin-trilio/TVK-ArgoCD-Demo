@@ -1,7 +1,7 @@
 apiVersion: triliovault.trilio.io/v1
 kind: Backup
 metadata:
-  name: postgres-full-backup
+  name: postgres-full-backup-1
   annotations:
     argocd.argoproj.io/sync-wave: "2"
 spec:
