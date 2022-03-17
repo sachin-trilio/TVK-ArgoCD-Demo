@@ -22,6 +22,6 @@ spec:
        podSelector:
          labels:
            - matchLabels:
-               app.kubernetes.io/name: postgresql
-         regex: postgres-postgresql*
-       containerRegex: postgres-postgresql*
+               app: postgres
+         regex: postgres-demo-0*
+       containerRegex: postgres*
