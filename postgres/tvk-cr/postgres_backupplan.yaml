@@ -3,7 +3,8 @@ kind: BackupPlan
 metadata:
  name: postgres-backupplan
  namespace: postgres
- argocd.argoproj.io/sync-wave: "1"
+ annotations:
+   argocd.argoproj.io/sync-wave: "1"
 spec:
  backupNamespace: postgres
  backupConfig:
