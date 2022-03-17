@@ -8,6 +8,11 @@ spec:
  backupConfig:
    target:
      name: demo-s3-target
+     namespace: default
+   schedulePolicy:
+     fullBackupPolicy:
+       name: trilio-daily-schedule-policy
+       namespace: default
  hookConfig:
    mode: Sequential
    hooks:
