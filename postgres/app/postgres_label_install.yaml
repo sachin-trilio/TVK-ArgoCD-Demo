@@ -57,7 +57,7 @@ spec:
       name: postgredb
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: ebs-sc
+      storageClassName: standard-csi
       resources:
         requests:
           storage: 3Gi
