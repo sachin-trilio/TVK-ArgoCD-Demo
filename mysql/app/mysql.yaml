@@ -83,46 +83,46 @@ spec:
     app: k8s-demo-app
     tier: mysql
   clusterIP: None
----
+# ---
 ## Deployment for frontend webserver
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: k8s-demo-app-frontend
-  labels:
-    app: k8s-demo-app
-    tier: frontend
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: k8s-demo-app
-      tier: frontend
-  template:
-    metadata:
-      labels:
-        app: k8s-demo-app
-        tier: frontend
-    spec:
-      containers:
-      - name: demoapp-frontend
-        image: docker.io/trilio/k8s-demo-app:v1
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 80
----
+# apiVersion: apps/v# 1
+# kind: Deployme# nt
+# metadat# a:
+#   name:#  k8s-demo-app-frontend
+#   label# s:
+#     app: k8s# -demo-app
+#     tier: fr# ontend
+# spec:
+#   r# eplicas: 3
+#   sel# ector:
+#     mat# chLabels:
+#       app: k8s-demo-app
+#       tier: frontend
+#   template:
+#     metadata:
+#       labels:
+#         app: k8s-demo-app
+#         tier: frontend
+#     spec:
+#       containers:
+#       - name: demoapp-frontend
+#         image: docker.io/trilio/k8s-demo-app:v1
+#         imagePullPolicy: IfNotPresent
+#         ports:
+#         - containerPort: 80
+# ---
 ## Service for frontend
-apiVersion: v1
-kind: Service
-metadata:
-  name: k8s-demo-app-frontend
-  labels:
-    app: k8s-demo-app
-    tier: frontend
-spec:
-  ports:
-  - name: web
-    port: 80
-  selector:
-    app: k8s-demo-app
-    tier: frontend
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: k8s-demo-app-frontend
+#   labels:
+#     app: k8s-demo-app
+#     tier: frontend
+# spec:
+#   ports:
+#   - name: web
+#     port: 80
+#   selector:
+#     app: k8s-demo-app
+#     tier: frontend
