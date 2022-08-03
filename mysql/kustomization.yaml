@@ -1,6 +1,5 @@
-namespace: mysql
+# namespace: mysql
 resources:
-- app/ns.yaml
 - tvk-cr/tv-bkp-secret-target.yaml
 - app/mysql.yaml
 - tvk-cr/mysql_hook.yaml
