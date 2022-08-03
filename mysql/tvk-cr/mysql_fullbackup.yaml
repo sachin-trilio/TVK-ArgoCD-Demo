@@ -2,6 +2,7 @@ apiVersion: triliovault.trilio.io/v1
 kind: Backup
 metadata:
   name: mysql-full-backup
+  namespace: mysql
 spec:
   type: Full
   backupPlan:
