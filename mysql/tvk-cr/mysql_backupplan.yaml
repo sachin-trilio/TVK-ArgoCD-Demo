@@ -8,7 +8,7 @@ spec:
  backupConfig:
    target:
      name: demo-s3-target
-     namespace: default
+     namespace: mysql
    schedulePolicy:
      fullBackupPolicy:
        name: trilio-daily-schedule-policy
