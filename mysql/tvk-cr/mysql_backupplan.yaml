@@ -21,6 +21,6 @@ spec:
        podSelector:
          labels:
            - matchLabels:
-               app: mysql-qa
-         regex: mysql-qa*
-       containerRegex: mysql-qa*
+               app: k8s-demo-app
+         regex: k8s-demo-app-mysql*
+       containerRegex: mysql*
