@@ -1,0 +1,8 @@
+apiVersion: tower.ansible.com/v1alpha1
+kind: AnsibleJob
+metadata:
+  name: demo-job-002
+  namespace: ansible-automation-platform
+spec:
+  tower_auth_secret: toweraccess
+  job_template_name: tvk-project
