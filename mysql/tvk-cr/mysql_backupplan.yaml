@@ -1,26 +1,29 @@
 apiVersion: triliovault.trilio.io/v1
 kind: BackupPlan
 metadata:
- name: mysql-backupplan
- namespace: mysql
+  name: mysql-backupplan
+  namespace: mysql
 spec:
- backupNamespace: mysql
- backupConfig:
-   target:
-     name: demo-s3-target
-     namespace: mysql
-   schedulePolicy:
-     fullBackupPolicy:
-       name: trilio-daily-schedule-policy
-       namespace: default
- hookConfig:
-   mode: Sequential
-   hooks:
-     - hook:
-         name: mysql-hook
-       podSelector:
-         labels:
-           - matchLabels:
-               app: k8s-demo-app
-         regex: k8s-demo-app-mysql*
-       containerRegex: mysql*
+  backupNamespace: mysql
+  backupConfig:
+    target:
+      name: demo-s3-target
+      namespace: mysql
+    schedulePolicy:
+      fullBackupPolicy:
+        name: trilio-daily-schedule-policy
+        namespace: default
+  backupPlanFlags:
+    skipImageBackup: true
+  retainHelmApps: false
+  hookConfig:
+    mode: Sequential
+    hooks:
+      - hook:
+          name: mysql-hook
+        podSelector:
+          labels:
+            - matchLabels:
+                app: k8s-demo-app
+          regex: k8s-demo-app-mysql*
+        containerRegex: mysql*
